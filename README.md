@@ -4,6 +4,7 @@
 ---
 
 Inspired by [Luo](https://github.com/oeed/Luo)
+Examples are located [here](https://github.com/PizzaCrust/Jua/wiki/About-Jua).
 
 ---
 **Version** | **Features / Changes** | **Date**
