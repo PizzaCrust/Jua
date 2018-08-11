@@ -17,6 +17,7 @@ expression
                     :
                     | primitive
                     | invocation
+                    | staticInvocation
                     ;
 
 args

@@ -16,7 +16,7 @@
                 <version>4.7.1</version>
                 <configuration>
                     <arguments>
-                        <argument>package</argument>
+                        <argument>-package</argument>
                         <argument>online.pizzacrust.jua.antlr</argument>
                     </arguments>
                 </configuration>
