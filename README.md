@@ -3,8 +3,8 @@
 
 ---
 
-Inspired by [Luo](https://github.com/oeed/Luo)
-Examples are located [here](https://github.com/PizzaCrust/Jua/wiki/About-Jua).
+Inspired by [Luo](https://github.com/oeed/Luo) <br />
+Examples are located [here](https://github.com/PizzaCrust/Jua/wiki/About-Jua)
 
 ---
 **Version** | **Features / Changes** | **Date**
