@@ -34,14 +34,15 @@ public class JuaFunction {
                 body.add(pair.a);
                 body.add(pair.b);
             } else if (bodyExpressionContext.varAssign() != null) {
-                body.add(new VariableAssignment(bodyExpressionContext.varAssign().Q_NAME().toString(), bodyExpressionContext.varAssign().expression()));
+                body.add(new VariableAssignment(bodyExpressionContext.varAssign().potentialAssignationNames().toString(),
+                    bodyExpressionContext.varAssign().expression()));
             }
             if (bodyExpressionContext.invocation() != null || bodyExpressionContext.staticInvocation() != null) {
                 body.add(MethodInvocation.from(bodyExpressionContext));
             }
         }
-        body.add(new MethodInvocation("super",
-                "new",functionContext.constructorBody().superInvocation().args().getText()));
+        //body.add(new MethodInvocation("super",
+        //        "new",functionContext.constructorBody().superInvocation().args().getText()));
         return new JuaFunction(name, parameters, body);
     }
 
@@ -59,13 +60,14 @@ public class JuaFunction {
                 body.add(pair.a);
                 body.add(pair.b);
             } else if (bodyExpressionContext.varAssign() != null) {
-                body.add(new VariableAssignment(bodyExpressionContext.varAssign().Q_NAME().toString(), bodyExpressionContext.varAssign().expression()));
+                body.add(new VariableAssignment(bodyExpressionContext.varAssign().potentialAssignationNames().getText(),
+                        bodyExpressionContext.varAssign().expression()));
             }
             if (bodyExpressionContext.invocation() != null || bodyExpressionContext.staticInvocation() != null) {
                 body.add(MethodInvocation.from(bodyExpressionContext));
             }
         }
-        return new JuaFunction(name, parameters, body);
+        return new JuaFunction("this." + name, parameters, body);
     }
 
     @Override

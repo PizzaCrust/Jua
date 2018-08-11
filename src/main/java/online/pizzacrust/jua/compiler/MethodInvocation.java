@@ -15,24 +15,27 @@ public class MethodInvocation {
     }
 
     public static MethodInvocation from(JuaParser.ExpressionContext expressionContext) {
-        String parameters = expressionContext.invocation().args().toString();
         if (expressionContext.invocation() != null) {
+            String parameters = expressionContext.invocation().args().toString();
             return new MethodInvocation(null, expressionContext.invocation().Q_NAME().toString(),
                     parameters);
         } else {
+            String parameters = expressionContext.staticInvocation().args().getText();
             return new MethodInvocation(expressionContext.staticInvocation().Q_NAME(0).toString(),
-                    expressionContext.invocation().Q_NAME().toString(), parameters);
+                    expressionContext.staticInvocation().Q_NAME(1).toString(), parameters);
         }
     }
 
     public static MethodInvocation from(JuaParser.BodyExpressionContext expressionContext) {
-        String parameters = expressionContext.invocation().args().getText();
+        System.out.println(expressionContext.getText());
         if (expressionContext.invocation() != null) {
+            String parameters = expressionContext.invocation().args().getText();
             return new MethodInvocation(null, expressionContext.invocation().Q_NAME().toString(),
                     parameters);
         } else {
+            String parameters = expressionContext.staticInvocation().args().getText();
             return new MethodInvocation(expressionContext.staticInvocation().Q_NAME(0).toString(),
-                    expressionContext.invocation().Q_NAME().toString(), parameters);
+                    expressionContext.staticInvocation().Q_NAME(1).toString(), parameters);
         }
     }
 

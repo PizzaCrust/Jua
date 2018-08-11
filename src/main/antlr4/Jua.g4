@@ -18,6 +18,7 @@ expression
                     | primitive
                     | invocation
                     | staticInvocation
+                    | staticVarReference
                     ;
 
 args
@@ -36,8 +37,17 @@ varDeclare          :
                     | 'var' Q_NAME '=' expression
                     ;
 
+potentialAssignationNames:
+                         | Q_NAME
+                         | staticVarReference
+                         ;
+
 varAssign
-                    : Q_NAME '=' expression
+                    : potentialAssignationNames '=' expression
+                    ;
+
+staticVarReference
+                    : Q_NAME '.' Q_NAME
                     ;
 
 bodyExpression
@@ -64,6 +74,7 @@ function
 
 classBodyExpr
                     :
+                    | varDeclare
                     | constructor
                     | function
                     ;
