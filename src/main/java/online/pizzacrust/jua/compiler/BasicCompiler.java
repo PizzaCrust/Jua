@@ -23,17 +23,8 @@ public class BasicCompiler {
         ANTLRInputStream charStream = new ANTLRInputStream(new FileReader(file));
         JuaLexer lexer = new JuaLexer(charStream);
         JuaParser parser = new JuaParser(new CommonTokenStream(lexer));
-        List<JuaFunction> functionList = new ArrayList<>();
-        for (JuaParser.ClassBodyExprContext classBodyExprContext : parser.class_declare().classBody().classBodyExpr()) {
-            if (classBodyExprContext.constructor() != null) {
-                functionList.add(JuaFunction.fromConstructor(classBodyExprContext.constructor()));
-                continue;
-            }
-            if (classBodyExprContext.function() != null) {
-                functionList.add(JuaFunction.from(classBodyExprContext.function()));
-            }
-        }
-        functionList.forEach(System.out::println);
+        JuaClass juaClass = JuaClass.from(parser.class_declare());
+        System.out.println(juaClass);
     }
 
 }

@@ -20,7 +20,7 @@ public class JuaFunction {
     }
 
     public static JuaFunction fromConstructor(JuaParser.ConstructorContext functionContext) {
-        String name = "<init>";
+        String name = "class.new";
         List<String> parameters = new ArrayList<>();
         for (TerminalNode terminalNode : functionContext.functionArgs().Q_NAME()) {
             parameters.add(terminalNode.toString());
